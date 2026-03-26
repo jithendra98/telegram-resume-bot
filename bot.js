@@ -606,4 +606,12 @@ ${gap}`
     ];
 }
 
-console.log('🤖 ResumeMatch AI Bot is running with all features! Listening for messages...');
+// ─── Health check server for Render free tier ───
+const PORT = process.env.PORT || 3000;
+http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('ResumeMatch AI Bot is running!');
+}).listen(PORT, () => {
+    console.log(`🌐 Health server on port ${PORT}`);
+    console.log('🤖 ResumeMatch AI Bot is running with all features! Listening for messages...');
+});
